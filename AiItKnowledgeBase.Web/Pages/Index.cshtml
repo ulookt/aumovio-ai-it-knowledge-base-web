@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "IT Knowledge Base Assistant";
+}
+
+<h2>IT Knowledge Base Assistant</h2>
+
+<form method="post">
+    <div>
+        <label><strong>Ask a question:</strong></label><br />
+        <input type="text" name="UserQuestion" style="width: 400px;" />
+    </div>
+
+    <br />
+
+    <button type="submit">Ask</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Answer))
+{
+    <hr />
+    <h3>Answer</h3>
+    <p>@Model.Answer</p>
+}
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <p style="color:red">@Model.ErrorMessage</p>
+}
