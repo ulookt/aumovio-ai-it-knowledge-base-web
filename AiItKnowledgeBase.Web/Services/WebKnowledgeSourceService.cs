@@ -15,7 +15,6 @@ namespace AiItKnowledgeBase.Web.Services
         {
             var html = await _httpClient.GetStringAsync(url);
 
-            // Very simple HTML-to-text conversion
             var text = Regex.Replace(html, "<.*?>", string.Empty);
             text = Regex.Replace(text, @"\s+", " ").Trim();
 

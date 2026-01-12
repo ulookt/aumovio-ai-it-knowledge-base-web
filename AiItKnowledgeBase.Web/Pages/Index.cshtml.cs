@@ -38,7 +38,6 @@ public class IndexModel : PageModel
             return;
         }
 
-        // 1. Check cache first
         if (_answerCacheService.TryGet(UserQuestion, out var cachedAnswer))
         {
             Answer = cachedAnswer;
@@ -57,7 +56,6 @@ public class IndexModel : PageModel
             }
             catch
             {
-                // Fallback to local file if website is unavailable
                 content = _kbService.LoadContent();
             }
             var chunks = _retrievalService.SplitIntoChunks(content);
@@ -65,7 +63,6 @@ public class IndexModel : PageModel
 
             Answer = await _openAiService.GetAnswerAsync(UserQuestion, bestChunk);
 
-            // 2. Store answer in cache
             _answerCacheService.Store(UserQuestion, Answer);
         }
         catch (Exception ex)
