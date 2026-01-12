@@ -33,6 +33,7 @@ Note:
 - If you want to test with different information other than KnowledgeBase.txt, you can replace the content of KnowledgeBase.txt with your own information in the AiItKnowledgeBase.Web/Data folder.
 
 4. Open the applicationOpen a browser and navigate to: http://localhost:5202
+
 What the application does:
 1. Loads IT support content from a local text file (KnowledgeBase.txt)
 2. Optionally loads IT documentation from a website
