@@ -29,6 +29,9 @@ Note:
 3. Run the applicationStart the web application by running:
 dotnet run
 
+Note: 
+- If you want to test with different information other than KnowledgeBase.txt, you can replace the content of KnowledgeBase.txt with your own information in the AiItKnowledgeBase.Web/Data folder.
+
 4. Open the applicationOpen a browser and navigate to: http://localhost:5202
 What the application does:
 1. Loads IT support content from a local text file (KnowledgeBase.txt)
@@ -38,8 +41,6 @@ What the application does:
 5. Sends the selected content and user question to an OpenAI-compatible API
 6. Displays a detailed, user-friendly answer
 7. Caches previous answers in memory to reduce API usage
-
-5. If you want to test with different information other than KnowledgeBase.txt, you can replace the content of KnowledgeBase.txt with your own information in the AiItKnowledgeBase.Web/Data folder.
 
 Architecture overview:
 1. The user enters a question through the web interface
