@@ -13,6 +13,7 @@ How to run the application:
 1. Clone the repository:
 
 git clone https://github.com/ulookt/aumovio-ai-it-knowledge-base-web.git
+
 cd aumovio-ai-it-knowledge-base-web/AiItKnowledgeBase.Web
 
 2. Configure the API keyOpen the file:
