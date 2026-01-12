@@ -1,87 +1,101 @@
-IT Knowledge Base:
+IT KNOWLEDGE BASE
 
-Your name: Uluk AI 
-Title: IT Assistant in Aumovio
+Name: Uluk AI
+Title: IT Assistant at Aumovio
 Contact: uluk_it_support@aumovio.ai
 
-1) Password Reset (Self-Service)
+--------------------------------------------------
+
+1) PASSWORD RESET (SELF-SERVICE)
 
 Keywords: password, reset, credentials, account, portal, sspr
 
 Summary:
-This article explains how employees can reset their company password using the self-service password reset (SSPR) portal.
+This article explains how employees can reset their Aumovio company password using the Self-Service Password Reset (SSPR) portal without contacting IT support.
 
 Instructions:
-
-1. Open the company Self-Service Password Reset (SSPR) page: `<company-sspr-url>`.
-2. Enter your company email address or UPN.
-3. Complete the identity verification process (for example, SMS code or authenticator app).
-4. Choose a new password that meets the company policy:
-
-   Minimum 12 characters
-   Combination of uppercase and lowercase letters
-   At least one number and one symbol
-5. Wait 2–3 minutes for the password to synchronize.
-6. Sign in again to Windows, Outlook, or Microsoft Teams.
+1. Open the Aumovio Self-Service Password Reset page:
+   https://sspr.aumovio.ai
+2. Enter your company email address or UPN (example: firstname.lastname@aumovio.ai).
+3. Select a verification method and complete identity verification:
+   - SMS verification code
+   - Microsoft Authenticator app
+4. Create a new password that meets the Aumovio security policy:
+   - Minimum 12 characters
+   - At least one uppercase letter
+   - At least one lowercase letter
+   - At least one number
+   - At least one special character
+5. Submit the password reset request.
+6. Wait 2 to 3 minutes for the password to synchronize across systems.
+7. Sign in again to Windows, Outlook, Microsoft Teams, and other company services.
 
 Troubleshooting:
-
-If no verification methods are available, contact IT support to register a phone number or authenticator app.
-If the account is locked, wait 15 minutes and try again or contact IT support.
+1. If no verification methods are available, contact IT support to register a phone number or authenticator app.
+2. If the account is locked, wait 15 minutes and try again.
+3. If the problem continues, contact IT support.
 
 Notes:
+1. Password changes may take several minutes to propagate to all company systems.
 
-Password changes may take several minutes to propagate to all company services.
+--------------------------------------------------
 
-2) VPN Setup and Connection (Windows & macOS)
+2) VPN SETUP AND CONNECTION (WINDOWS AND MACOS)
 
 Keywords: vpn, remote access, client, connection, certificate, split tunnel
 
 Summary:
-This article describes how to install and connect to the corporate VPN for remote access.
+This article describes how to install and connect to the Aumovio corporate VPN for secure remote access to internal systems.
 
 Instructions (Windows):
-
-1. Download and install the approved VPN client from the IT portal: `<it-portal-url>`.
-2. Launch the VPN client and import the provided configuration profile: `<vpn-config-file>`.
-3. Sign in using your company credentials.
-4. Approve the multi-factor authentication (MFA) request.
-5. Confirm the connection by accessing internal websites or network drives.
+1. Download the approved VPN client from the Aumovio IT portal:
+   https://it-portal.aumovio.ai/software
+2. Install the VPN client on your device.
+3. Import the VPN configuration profile provided by IT:
+   aumovio-corporate-vpn.conf
+4. Launch the VPN client.
+5. Sign in using your Aumovio company credentials.
+6. Approve the multi-factor authentication (MFA) request.
+7. Confirm the VPN connection by accessing internal resources such as:
+   - https://intranet.aumovio.ai
+   - Company network drives
 
 Instructions (macOS):
-
-1. Download and install the approved VPN client from the IT portal.
+1. Download and install the approved VPN client from the IT portal:
+   https://it-portal.aumovio.ai/software
 2. Import the VPN configuration profile.
-3. Sign in with your company credentials and approve the MFA prompt.
-4. Verify that internal resources are accessible.
+3. Launch the VPN client and sign in with company credentials.
+4. Approve the MFA prompt.
+5. Verify access to internal company resources.
 
 Troubleshooting:
-
-Restart the VPN client and try again.
-Ensure your internet connection is active.
-Verify that MFA approval was completed successfully.
-If the VPN still does not connect, restart your device.
-Contact IT support if the problem persists.
+1. Restart the VPN client and try again.
+2. Ensure your internet connection is stable.
+3. Confirm that the MFA request was approved.
+4. Restart your device if the connection fails repeatedly.
+5. Contact IT support if the VPN still does not connect.
 
 Notes:
+1. When connected to the VPN, some internet traffic may be routed through the company network (split tunneling).
 
-When connected to the VPN, some internet traffic may be routed through the company network (split tunneling).
+--------------------------------------------------
 
-3) Contacting IT Support
+3) CONTACTING IT SUPPORT
 
 Keywords: it support, helpdesk, contact, ticket
 
 Summary:
-Use this process if you cannot resolve an issue using the self-service guides.
+Use this process if you are unable to resolve an issue using the self-service guides.
 
 Instructions:
-
-1. Create a ticket in the IT support portal: `<it-support-url>`.
-2. Provide a clear description of the issue.
-3. Include screenshots or error messages if available.
-4. Submit the ticket and wait for confirmation.
+1. Open the Aumovio IT Support Portal:
+   https://support.aumovio.ai
+2. Create a new support ticket.
+3. Provide a clear and detailed description of the issue.
+4. Include screenshots, error messages, or log files if available.
+5. Submit the ticket and wait for confirmation.
 
 Notes:
-
-High-priority incidents may be escalated automatically.
-Response times depend on issue severity.
+1. High-priority incidents may be escalated automatically.
+2. Response times depend on issue severity and business impact.
+3. You can track ticket status through the support portal.
