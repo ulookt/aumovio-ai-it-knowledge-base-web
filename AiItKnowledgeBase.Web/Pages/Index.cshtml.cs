@@ -6,13 +6,22 @@ public class IndexModel : PageModel
 {
     private readonly KnowledgeBaseService _kbService;
     private readonly TextRetrievalService _retrievalService;
+    private readonly OpenAiService _openAiService;
+    private readonly AnswerCacheService _answerCacheService;
+    private readonly WebKnowledgeSourceService _webKnowledgeService;
 
     public IndexModel(
         KnowledgeBaseService kbService,
-        TextRetrievalService retrievalService)
+        TextRetrievalService retrievalService,
+        OpenAiService openAiService,
+        AnswerCacheService answerCacheService,
+        WebKnowledgeSourceService webKnowledgeService)
     {
         _kbService = kbService;
         _retrievalService = retrievalService;
+        _openAiService = openAiService;
+        _answerCacheService = answerCacheService;
+        _webKnowledgeService = webKnowledgeService;
     }
 
     [BindProperty]
@@ -21,7 +30,7 @@ public class IndexModel : PageModel
     public string? Answer { get; set; }
     public string? ErrorMessage { get; set; }
 
-    public void OnPost()
+    public async Task OnPostAsync()
     {
         if (string.IsNullOrWhiteSpace(UserQuestion))
         {
@@ -29,13 +38,35 @@ public class IndexModel : PageModel
             return;
         }
 
+        // 1. Check cache first
+        if (_answerCacheService.TryGet(UserQuestion, out var cachedAnswer))
+        {
+            Answer = cachedAnswer;
+            return;
+        }
+
         try
         {
-            var content = _kbService.LoadContent();
+            string content;
+
+            try
+            {
+                content = await _webKnowledgeService.LoadFromUrlAsync(
+                    "https://www.ibm.com/docs/en/om-jvm/5.4.0?topic=troubleshooting-checklist"
+                );
+            }
+            catch
+            {
+                // Fallback to local file if website is unavailable
+                content = _kbService.LoadContent();
+            }
             var chunks = _retrievalService.SplitIntoChunks(content);
             var bestChunk = _retrievalService.FindBestChunk(chunks, UserQuestion);
 
-            Answer = bestChunk;
+            Answer = await _openAiService.GetAnswerAsync(UserQuestion, bestChunk);
+
+            // 2. Store answer in cache
+            _answerCacheService.Store(UserQuestion, Answer);
         }
         catch (Exception ex)
         {

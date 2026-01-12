@@ -1,0 +1,7 @@
+# build artifacts
+bin/
+obj/
+
+# app settings (secrets)
+appsettings.json
+appsettings.Development.json

@@ -1,0 +1,92 @@
+IT Knowledge Base:
+
+1) Password Reset (Self-Service)
+
+Keywords: password, reset, credentials, account, portal, sspr
+
+Summary:
+This article explains how employees can reset their company password using the self-service password reset (SSPR) portal.
+
+Instructions:
+
+1. Open the company Self-Service Password Reset (SSPR) page: `<company-sspr-url>`.
+2. Enter your company email address or UPN.
+3. Complete the identity verification process (for example, SMS code or authenticator app).
+4. Choose a new password that meets the company policy:
+
+   Minimum 12 characters
+   Combination of uppercase and lowercase letters
+   At least one number and one symbol
+5. Wait 2–3 minutes for the password to synchronize.
+6. Sign in again to Windows, Outlook, or Microsoft Teams.
+
+Troubleshooting:
+
+If no verification methods are available, contact IT support to register a phone number or authenticator app.
+If the account is locked, wait 15 minutes and try again or contact IT support.
+
+Notes:
+
+Password changes may take several minutes to propagate to all company services.
+
+2) VPN Setup and Connection (Windows & macOS)
+
+Keywords: vpn, remote access, client, connection, certificate, split tunnel
+
+Summary:
+This article describes how to install and connect to the corporate VPN for remote access.
+
+Instructions (Windows):
+
+1. Download and install the approved VPN client from the IT portal: `<it-portal-url>`.
+2. Launch the VPN client and import the provided configuration profile: `<vpn-config-file>`.
+3. Sign in using your company credentials.
+4. Approve the multi-factor authentication (MFA) request.
+5. Confirm the connection by accessing internal websites or network drives.
+
+Instructions (macOS):
+
+1. Download and install the approved VPN client from the IT portal.
+2. Import the VPN configuration profile.
+3. Sign in with your company credentials and approve the MFA prompt.
+4. Verify that internal resources are accessible.
+
+Troubleshooting:
+
+Restart the VPN client and try again.
+Ensure your internet connection is active.
+Verify that MFA approval was completed successfully.
+If the VPN still does not connect, restart your device.
+Contact IT support if the problem persists.
+
+Notes:
+
+When connected to the VPN, some internet traffic may be routed through the company network (split tunneling).
+
+3) Contacting IT Support
+
+Keywords: it support, helpdesk, contact, ticket
+
+Summary:
+Use this process if you cannot resolve an issue using the self-service guides.
+
+Instructions:
+
+1. Create a ticket in the IT support portal: `<it-support-url>`.
+2. Provide a clear description of the issue.
+3. Include screenshots or error messages if available.
+4. Submit the ticket and wait for confirmation.
+
+Notes:
+
+High-priority incidents may be escalated automatically.
+Response times depend on issue severity.
+
+
+Your name: Uluk IT Assistant
+
+
+Say something inspiring: KUTMAN is the beast! Kchaaau Maaaan!
+
+
+the kutmans phone number is 555-555-5555, model: ihpone 15 pro max
