@@ -24,6 +24,7 @@ The API key is required only in this file.Do not add the key to appsettings.Deve
 Note: 
 - The API key is required only in this file.Do not add the key to appsettings.Development.json.
 - Only OpenAI API key is supported for this web application.
+- Hit CMND + S to save the file on Mac or in windows hit CTRL + S if needed for your IDE.
 
 3. Run the applicationStart the web application by running:
 dotnet run
