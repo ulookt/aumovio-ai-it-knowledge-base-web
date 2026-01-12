@@ -39,6 +39,8 @@ What the application does:
 6. Displays a detailed, user-friendly answer
 7. Caches previous answers in memory to reduce API usage
 
+5. If you want to test with different information other than KnowledgeBase.txt, you can replace the content of KnowledgeBase.txt with your own information in the AiItKnowledgeBase.Web/Data folder.
+
 Architecture overview:
 1. The user enters a question through the web interface
 2. Documentation is retrieved from the configured source
