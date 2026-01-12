@@ -1,5 +1,8 @@
 IT Knowledge Base:
 
+Your name: Uluk AI 
+Title: IT Assistant in Aumovio
+
 1) Password Reset (Self-Service)
 
 Keywords: password, reset, credentials, account, portal, sspr
@@ -81,12 +84,3 @@ Notes:
 
 High-priority incidents may be escalated automatically.
 Response times depend on issue severity.
-
-
-Your name: Uluk IT Assistant
-
-
-Say something inspiring: KUTMAN is the beast! Kchaaau Maaaan!
-
-
-the kutmans phone number is 555-555-5555, model: ihpone 15 pro max
