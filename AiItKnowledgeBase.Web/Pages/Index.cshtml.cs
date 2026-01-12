@@ -2,72 +2,77 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using AiItKnowledgeBase.Web.Services;
 
-public class IndexModel : PageModel
+namespace AiItKnowledgeBase.Web.Pages
 {
-    private readonly KnowledgeBaseService _kbService;
-    private readonly TextRetrievalService _retrievalService;
-    private readonly OpenAiService _openAiService;
-    private readonly AnswerCacheService _answerCacheService;
-    private readonly WebKnowledgeSourceService _webKnowledgeService;
-
-    public IndexModel(
-        KnowledgeBaseService kbService,
-        TextRetrievalService retrievalService,
-        OpenAiService openAiService,
-        AnswerCacheService answerCacheService,
-        WebKnowledgeSourceService webKnowledgeService)
+    public class IndexModel : PageModel
     {
-        _kbService = kbService;
-        _retrievalService = retrievalService;
-        _openAiService = openAiService;
-        _answerCacheService = answerCacheService;
-        _webKnowledgeService = webKnowledgeService;
-    }
+        private readonly KnowledgeBaseService _kbService;
+        private readonly TextRetrievalService _retrievalService;
+        private readonly OpenAiService _openAiService;
+        private readonly AnswerCacheService _answerCacheService;
+        private readonly WebKnowledgeSourceService _webKnowledgeService;
 
-    [BindProperty]
-    public string? UserQuestion { get; set; }
-
-    public string? Answer { get; set; }
-    public string? ErrorMessage { get; set; }
-
-    public async Task OnPostAsync()
-    {
-        if (string.IsNullOrWhiteSpace(UserQuestion))
+        public IndexModel(
+            KnowledgeBaseService kbService,
+            TextRetrievalService retrievalService,
+            OpenAiService openAiService,
+            AnswerCacheService answerCacheService,
+            WebKnowledgeSourceService webKnowledgeService)
         {
-            ErrorMessage = "Please enter a question.";
-            return;
+            _kbService = kbService;
+            _retrievalService = retrievalService;
+            _openAiService = openAiService;
+            _answerCacheService = answerCacheService;
+            _webKnowledgeService = webKnowledgeService;
         }
 
-        if (_answerCacheService.TryGet(UserQuestion, out var cachedAnswer))
-        {
-            Answer = cachedAnswer;
-            return;
-        }
+        [BindProperty]
+        public string? UserQuestion { get; set; }
 
-        try
+        public string? Answer { get; set; }
+        public string? ErrorMessage { get; set; }
+
+        public async Task OnPostAsync()
         {
-            string content;
+            if (string.IsNullOrWhiteSpace(UserQuestion))
+            {
+                ErrorMessage = "Please enter a question.";
+                return;
+            }
+
+            if (_answerCacheService.TryGet(UserQuestion, out var cachedAnswer))
+            {
+                Answer = cachedAnswer;
+                return;
+            }
 
             try
             {
-                content = await _webKnowledgeService.LoadFromUrlAsync(
-                    "https://www.ibm.com/docs/en/om-jvm/5.4.0?topic=troubleshooting-checklist"
-                );
+                string content;
+
+                // OPTIONAL website source
+                // Put your IT support URL here if you want to use a website
+                string? knowledgeSourceUrl = null;
+
+                if (!string.IsNullOrWhiteSpace(knowledgeSourceUrl))
+                {
+                    content = await _webKnowledgeService.LoadFromUrlAsync(knowledgeSourceUrl);
+                }
+                else
+                {
+                    content = _kbService.LoadContent();
+                }
+
+                var chunks = _retrievalService.SplitIntoChunks(content);
+                var bestChunk = _retrievalService.FindBestChunk(chunks, UserQuestion);
+
+                Answer = await _openAiService.GetAnswerAsync(UserQuestion, bestChunk);
+                _answerCacheService.Store(UserQuestion, Answer);
             }
-            catch
+            catch (Exception ex)
             {
-                content = _kbService.LoadContent();
+                ErrorMessage = ex.Message;
             }
-            var chunks = _retrievalService.SplitIntoChunks(content);
-            var bestChunk = _retrievalService.FindBestChunk(chunks, UserQuestion);
-
-            Answer = await _openAiService.GetAnswerAsync(UserQuestion, bestChunk);
-
-            _answerCacheService.Store(UserQuestion, Answer);
-        }
-        catch (Exception ex)
-        {
-            ErrorMessage = ex.Message;
         }
     }
 }

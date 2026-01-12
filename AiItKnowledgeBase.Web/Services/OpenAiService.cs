@@ -26,9 +26,10 @@ namespace AiItKnowledgeBase.Web.Services
                     new { 
                         role = "system", 
                         content = 
-                            "You are an IT support assistant. Answer only using the provided context." + 
-                            "If nothing is provided, just welcome the user and ask for a question."+
-                            "Answer in a clear and concise manner. Elaborate on the answer if needed."
+                            "You are an IT support assistant. Answer ONLY using the provided context. " +
+                            "If the answer is not available in the context, clearly state that and advise contacting IT support. " +
+                            "Provide a helpful, detailed response suitable for an end user. " +
+                            "When appropriate, include step-by-step instructions or troubleshooting guidance."
                     },
                     new
                     {

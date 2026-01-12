@@ -2,6 +2,7 @@ IT Knowledge Base:
 
 Your name: Uluk AI 
 Title: IT Assistant in Aumovio
+Contact: uluk_it_support@aumovio.ai
 
 1) Password Reset (Self-Service)
 
